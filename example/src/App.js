@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import {useMonnifyPayment, MonnifyButton, MonnifyConsumer} from 'react-monnify';
+import {useMonnifyPayment, MonnifyButton, MonnifyConsumer} from '../../dist';
 import './App.css';
 
 const config = {
@@ -9,7 +9,6 @@ const config = {
   reference: '' + Math.floor(Math.random() * 1000000000 + 1),
   customerFullName: 'John Doe',
   customerEmail: 'monnify@monnify.com',
-  customerMobileNumber: '08121281921',
   apiKey: 'MK_TEST_SAF7HR5F3F',
   contractCode: '4934121693',
   paymentDescription: 'Test Pay',
@@ -23,8 +22,8 @@ const config = {
 const MonnifyHookExample = () => {
   const componentProps = {
     ...config,
-    onSuccess: response => console.log(response),
-    onClose: response => console.log(response),
+    onComplete: (response) => console.log(response),
+    onClose: (response) => console.log(response),
   };
   const initializePayment = useMonnifyPayment(componentProps);
   return (
@@ -44,7 +43,7 @@ function App() {
   const componentProps = {
     ...config,
     text: 'Monnify Button Implementation',
-    onSuccess: (response) => console.log(response),
+    onComplete: (response) => console.log(response),
     onClose: (response) => console.log(response),
   };
 
