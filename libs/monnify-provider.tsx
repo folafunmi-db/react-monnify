@@ -5,19 +5,19 @@ import {MonnifyProps} from './types';
 
 interface MonnifyProviderProps extends MonnifyProps {
   children: JSX.Element;
-  onSuccess: Function;
+  onComplete: Function;
   onClose: Function;
 }
 
 const MonnifyProvider = ({
   children,
-  onSuccess,
+  onComplete,
   onClose,
   ...others
 }: MonnifyProviderProps): JSX.Element => {
   const initializePayment = useMonnifyPayment(others);
   return (
-    <MonnifyContext.Provider value={{initializePayment, onSuccess, onClose}}>
+    <MonnifyContext.Provider value={{initializePayment, onComplete, onClose}}>
       {children}
     </MonnifyContext.Provider>
   );

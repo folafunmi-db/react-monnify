@@ -51,6 +51,10 @@ export interface MonnifyProps {
    */
   paymentStatus?: 'PAID' | 'PENDING' | 'FAILED' | string;
   /**
+   * Status of the transaction ("CARD", "ACCOUNT_TRANSFER", "USSD" or "PHONE_NUMBER")
+   */
+  paymentMethods?: 'CARD' | 'ACCOUNT_TRANSFER' | 'USSD' | 'PHONE_NUMBER';
+  /**
    * Object containing specifications on how payments to this reserve account should be split.
    */
   incomeSplitConfig?: MonnifySplitOptions[];

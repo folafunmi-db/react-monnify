@@ -12,7 +12,7 @@ jest.mock('../monnify-actions');
 const componentProps = {
   ...config,
   text: 'Pay my damn money',
-  onSuccess: () => null,
+  onComplete: () => null,
   onClose: () => null,
 };
 

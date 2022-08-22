@@ -25,13 +25,13 @@ describe('useMonnifyPayment()', () => {
     const {result, rerender} = renderHook(() => useMonnifyPayment(config));
     rerender();
 
-    const onSuccess = jest.fn();
+    const onComplete = jest.fn();
     const onClose = jest.fn();
     act(() => {
-      result.current(onSuccess, onClose);
+      result.current(onComplete, onClose);
     });
 
-    expect(onSuccess).toHaveBeenCalledTimes(0);
+    expect(onComplete).toHaveBeenCalledTimes(0);
     expect(onClose).toHaveBeenCalledTimes(0);
     expect(callMonnifySDK).toHaveBeenCalledTimes(1);
   });

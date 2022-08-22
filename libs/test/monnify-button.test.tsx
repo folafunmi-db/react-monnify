@@ -13,7 +13,7 @@ const componentProps = {
   ...config,
   className: 'btn',
   text: 'Pay my damn money',
-  onSuccess: () => null,
+  onComplete: () => null,
   onClose: () => null,
 };
 

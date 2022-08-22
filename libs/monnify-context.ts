@@ -2,13 +2,13 @@ import {createContext} from 'react';
 
 type IMonnifyContext = {
   initializePayment: Function;
-  onSuccess: Function;
+  onComplete: Function;
   onClose: Function;
 };
 
 const MonnifyContext = createContext<IMonnifyContext>({
   initializePayment: () => null,
-  onSuccess: () => null,
+  onComplete: () => null,
   onClose: () => null,
 });
 
