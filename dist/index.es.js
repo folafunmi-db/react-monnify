@@ -5,10 +5,10 @@ function useMonnifyScript(isTestMode) {
     if (isTestMode === void 0) { isTestMode = false; }
     var src = '';
     if (isTestMode) {
-        src = 'https://sandbox.sdk.monnify.com/plugin/monnify.js';
+        src = 'https://sdk.monnify.com/plugin/monnify.js';
     }
     else {
-        src = 'https://sandbox.sdk.monnify.com/plugin/monnify.js';
+        src = 'https://sdk.monnify.com/plugin/monnify.js';
     }
     var _a = useState({
         loaded: false,
@@ -56,13 +56,13 @@ function useMonnifyScript(isTestMode) {
 }
 
 var callMonnifySDK = function (monnifyArgs) {
-    //@ts-ignore
+    // @ts-ignore
     window.MonnifySDK && window.MonnifySDK.initialize(monnifyArgs);
 };
 
 function useMonnifyPayment(options) {
     var _a = useMonnifyScript(options.isTestMode), scriptLoaded = _a[0], scriptError = _a[1];
-    var isTestMode = options.isTestMode, apiKey = options.apiKey, contractCode = options.contractCode, amount = options.amount, reference = options.reference, currency = options.currency, customerFullName = options.customerFullName, customerEmail = options.customerEmail, customerMobileNumber = options.customerMobileNumber, paymentDescription = options.paymentDescription, redirectUrl = options.redirectUrl, metadata = options.metadata, incomeSplitConfig = options.incomeSplitConfig;
+    var isTestMode = options.isTestMode, apiKey = options.apiKey, contractCode = options.contractCode, amount = options.amount, reference = options.reference, currency = options.currency, customerFullName = options.customerFullName, customerEmail = options.customerEmail, paymentDescription = options.paymentDescription, paymentMethods = options.paymentMethods, redirectUrl = options.redirectUrl, metadata = options.metadata, incomeSplitConfig = options.incomeSplitConfig;
     var clean = function (obj) {
         // tslint:disable-next-line:prefer-const
         for (var propName in obj) {
@@ -88,8 +88,8 @@ function useMonnifyPayment(options) {
                 currency: currency || 'NGN',
                 customerFullName: customerFullName || '',
                 customerEmail: customerEmail || '',
-                customerMobileNumber: customerMobileNumber || '',
                 paymentDescription: paymentDescription || '',
+                paymentMethods: paymentMethods || ['CARD', 'ACCOUNT_TRANSFER', 'USSD', 'PHONE_NUMBER'],
                 redirectUrl: redirectUrl || '',
                 metadata: metadata || {},
                 incomeSplitConfig: incomeSplitConfig || null,
@@ -145,34 +145,34 @@ function __rest(s, e) {
 }
 
 var MonnifyButton = function (_a) {
-    var text = _a.text, className = _a.className, children = _a.children, onSuccess = _a.onSuccess, onClose = _a.onClose, others = __rest(_a, ["text", "className", "children", "onSuccess", "onClose"]);
+    var text = _a.text, className = _a.className, children = _a.children, onComplete = _a.onComplete, onClose = _a.onClose, others = __rest(_a, ["text", "className", "children", "onComplete", "onClose"]);
     var initializePayment = useMonnifyPayment(others);
-    return (React.createElement("button", { className: className, onClick: function () { return initializePayment(onSuccess, onClose); } }, text || children));
+    return (React.createElement("button", { className: className, onClick: function () { return initializePayment(onComplete, onClose); } }, text || children));
 };
 
 var MonnifyContext = createContext({
     initializePayment: function () { return null; },
-    onSuccess: function () { return null; },
+    onComplete: function () { return null; },
     onClose: function () { return null; },
 });
 
 var MonnifyProvider = function (_a) {
-    var children = _a.children, onSuccess = _a.onSuccess, onClose = _a.onClose, others = __rest(_a, ["children", "onSuccess", "onClose"]);
+    var children = _a.children, onComplete = _a.onComplete, onClose = _a.onClose, others = __rest(_a, ["children", "onComplete", "onClose"]);
     var initializePayment = useMonnifyPayment(others);
-    return (React.createElement(MonnifyContext.Provider, { value: { initializePayment: initializePayment, onSuccess: onSuccess, onClose: onClose } }, children));
+    return (React.createElement(MonnifyContext.Provider, { value: { initializePayment: initializePayment, onComplete: onComplete, onClose: onClose } }, children));
 };
 
 var MonnifyConsumerChild = function (_a) {
     var children = _a.children, ref = _a.ref;
-    var _b = useContext(MonnifyContext), initializePayment = _b.initializePayment, onSuccess = _b.onSuccess, onClose = _b.onClose;
-    var completeInitializePayment = function () { return initializePayment(onSuccess, onClose); };
+    var _b = useContext(MonnifyContext), initializePayment = _b.initializePayment, onComplete = _b.onComplete, onClose = _b.onClose;
+    var completeInitializePayment = function () { return initializePayment(onComplete, onClose); };
     return children({ initializePayment: completeInitializePayment, ref: ref });
 };
 var MonnifyConsumer = forwardRef(function (_a, ref) {
-    var children = _a.children, paraSuccess = _a.onSuccess, paraClose = _a.onClose, others = __rest(_a, ["children", "onSuccess", "onClose"]);
-    var onSuccess = paraSuccess ? paraSuccess : function () { return null; };
+    var children = _a.children, paraComplete = _a.onComplete, paraClose = _a.onClose, others = __rest(_a, ["children", "onComplete", "onClose"]);
+    var onComplete = paraComplete ? paraComplete : function () { return null; };
     var onClose = paraClose ? paraClose : function () { return null; };
-    return (React.createElement(MonnifyProvider, __assign({}, others, { onSuccess: onSuccess, onClose: onClose }),
+    return (React.createElement(MonnifyProvider, __assign({}, others, { onComplete: onComplete, onClose: onClose }),
         React.createElement(MonnifyConsumerChild, { ref: ref }, children)));
 });
 

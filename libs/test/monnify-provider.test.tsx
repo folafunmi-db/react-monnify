@@ -12,8 +12,12 @@ jest.mock('../monnify-actions');
 const componentProps = {
   ...config,
   text: 'Pay my damn money',
-  onComplete: () => null,
-  onClose: () => null,
+  onComplete: (): void => {
+    return;
+  },
+  onClose: (): void => {
+    return;
+  },
 };
 
 describe('<MonnifyProvider />', () => {
@@ -31,8 +35,8 @@ describe('<MonnifyProvider />', () => {
   it('render MonnifyProvider', () => {
     const tree = (
       <MonnifyConsumer {...componentProps}>
-        {({initializePayment}: Record<string, any>) => (
-          <button onClick={() => initializePayment()}>Use render props 2000</button>
+        {({initializePayment}: Record<string, any>): JSX.Element => (
+          <button onClick={(): void => initializePayment()}>Use render props 2000</button>
         )}
       </MonnifyConsumer>
     );

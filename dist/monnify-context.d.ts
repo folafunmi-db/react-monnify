@@ -1,7 +1,7 @@
 /// <reference types="react" />
 declare type IMonnifyContext = {
     initializePayment: Function;
-    onSuccess: Function;
+    onComplete: Function;
     onClose: Function;
 };
 declare const MonnifyContext: import("react").Context<IMonnifyContext>;

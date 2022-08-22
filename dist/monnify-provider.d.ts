@@ -2,8 +2,8 @@
 import { MonnifyProps } from './types';
 interface MonnifyProviderProps extends MonnifyProps {
     children: JSX.Element;
-    onSuccess: Function;
+    onComplete: Function;
     onClose: Function;
 }
-declare const MonnifyProvider: ({ children, onSuccess, onClose, ...others }: MonnifyProviderProps) => JSX.Element;
+declare const MonnifyProvider: ({ children, onComplete, onClose, ...others }: MonnifyProviderProps) => JSX.Element;
 export default MonnifyProvider;

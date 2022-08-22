@@ -6,6 +6,7 @@ import useMonnifyPayment from '../use-monnify';
 import {callMonnifySDK} from '../monnify-actions';
 import useMonnifyScript from '../monnify-script';
 import {config} from './fixtures';
+import {MonnifyPaymentMethods} from '../types';
 
 jest.mock('../monnify-actions');
 
@@ -51,7 +52,7 @@ describe('useMonnifyPayment()', () => {
     const {result, rerender} = renderHook(() =>
       useMonnifyPayment({
         ...config,
-        metadata: JSON.stringify({
+        metadata: {
           custom_field: [
             {
               display_name: 'Mobile Number',
@@ -59,9 +60,9 @@ describe('useMonnifyPayment()', () => {
               value: '+2348143109254',
             },
           ],
-        }),
+        },
         currency: 'NGN',
-        payment_method: ['mobile_money', 'ussd'],
+        paymentMethods: ['CARD', 'USSD'] as MonnifyPaymentMethods[],
       }),
     );
     rerender();

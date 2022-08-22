@@ -23,6 +23,8 @@ describe('useMonnifyScript()', () => {
     expect(result.current[0]).toBe(true);
     expect(result.current[1]).toBe(false);
     expect(document.getElementsByTagName('script').length).toBe(1);
-    expect(document.body.innerHTML).toMatch(new RegExp('https://demo.api.monnify.com/checkout.js'));
+    expect(document.body.innerHTML).toMatch(
+      new RegExp('https://sdk.monnify.com/plugin/monnify.js'),
+    );
   });
 });

@@ -33,10 +33,6 @@ export interface MonnifyProps {
    */
   customerEmail: string;
   /**
-   * Phone number of the customer.
-   */
-  customerMobileNumber: string;
-  /**
    * Description for the transaction. Will be used as the account name for bank transfer payments
    */
   paymentDescription?: string;
@@ -51,9 +47,9 @@ export interface MonnifyProps {
    */
   paymentStatus?: 'PAID' | 'PENDING' | 'FAILED' | string;
   /**
-   * Status of the transaction ("CARD", "ACCOUNT_TRANSFER", "USSD" or "PHONE_NUMBER")
+   * Payment method used on the transaction ("CARD", "ACCOUNT_TRANSFER", "USSD", "PHONE_NUMBER")
    */
-  paymentMethods?: 'CARD' | 'ACCOUNT_TRANSFER' | 'USSD' | 'PHONE_NUMBER';
+  paymentMethods?: MonnifyPaymentMethods[];
   /**
    * Object containing specifications on how payments to this reserve account should be split.
    */
@@ -92,3 +88,5 @@ export interface MonnifySplitOptions {
    */
   splitAmount?: number;
 }
+
+export type MonnifyPaymentMethods = 'CARD' | 'ACCOUNT_TRANSFER' | 'USSD' | 'PHONE_NUMBER';

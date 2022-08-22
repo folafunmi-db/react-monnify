@@ -13,8 +13,12 @@ const componentProps = {
   ...config,
   className: 'btn',
   text: 'Pay my damn money',
-  onComplete: () => null,
-  onClose: () => null,
+  onComplete: (): void => {
+    return;
+  },
+  onClose: (): void => {
+    return;
+  },
 };
 
 describe('<MonnifyButton />', () => {

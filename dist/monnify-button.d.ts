@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
 import { MonnifyProps } from './types';
-interface MonnifyButtonProps extends MonnifyProps {
+export interface MonnifyButtonProps extends MonnifyProps {
     text?: string;
     className?: string;
     children?: ReactNode;
-    onSuccess?: Function;
+    onComplete?: Function;
     onClose?: Function;
 }
-declare const MonnifyButton: ({ text, className, children, onSuccess, onClose, ...others }: MonnifyButtonProps) => JSX.Element;
+declare const MonnifyButton: ({ text, className, children, onComplete, onClose, ...others }: MonnifyButtonProps) => JSX.Element;
 export default MonnifyButton;
