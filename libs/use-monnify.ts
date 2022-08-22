@@ -39,7 +39,7 @@ export default function useMonnifyPayment(
     }
 
     if (scriptLoaded) {
-      const monnifyArgs: Record<string, any> = {
+      const monnifyArgs: MonnifyProps & {onComplete?: Function; onClose?: Function} = {
         onComplete: onComplete ? onComplete : (): any => null,
         onClose: onClose ? onClose : (): any => null,
         isTestMode,
@@ -54,7 +54,7 @@ export default function useMonnifyPayment(
         paymentMethods: paymentMethods || ['CARD', 'ACCOUNT_TRANSFER', 'USSD', 'PHONE_NUMBER'],
         redirectUrl: redirectUrl || '',
         metadata: metadata || {},
-        incomeSplitConfig: incomeSplitConfig || null,
+        incomeSplitConfig: incomeSplitConfig || undefined,
         'data-custom-button': options['data-custom-button'] || '',
       };
       callMonnifySDK(clean(monnifyArgs));

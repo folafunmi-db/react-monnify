@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dansteve/react-monnify.git"
+    "url": "git+https://github.com/folafunmi-db/react-monnify.git"
   },
   "keywords": [
     "Javascript",
@@ -36,9 +36,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dansteve/react-monnify/issues"
+    "url": "https://github.com/folafunmi-db/react-monnify/issues"
   },
-  "homepage": "https://github.com/dansteve/react-monnify#readme",
+  "homepage": "https://github.com/folafunmi-db/react-monnify#readme",
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0"
