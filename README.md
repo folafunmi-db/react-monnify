@@ -1,6 +1,6 @@
-# react-monnify 0.0.7
+ react-monnify 0.0.8
 
-This is a react library for implementing monnify payment gateway
+his is a react library for implementing monnify payment gateway
 
 ## Demo
 
