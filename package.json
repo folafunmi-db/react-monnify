@@ -1,5 +1,5 @@
 {
-  "name": "@folafunmi/react-monnify",
+  "name": "react-monnify-2",
   "version": "0.0.8",
   "description": "This is an reactJS library for implementing monnify payment gateway",
   "main": "dist/index.js",
